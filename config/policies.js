@@ -31,6 +31,16 @@ module.exports.policies = {
 
   HomeController: {
     '*': true
+  },
+
+  TweetController: {
+    'find': true,
+    'findOne': true
+  },
+
+  UserController: {
+    'find': true,
+    'findOne': true
   }
 
   /***************************************************************************

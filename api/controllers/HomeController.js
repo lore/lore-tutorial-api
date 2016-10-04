@@ -9,7 +9,8 @@ module.exports = {
 
   index: function(req, res) {
     res.json({
-      tweets: req.baseUrl + '/tweets'
+      tweets: req.baseUrl + '/tweets',
+      users: req.baseUrl + '/users'
     })
   }
 
