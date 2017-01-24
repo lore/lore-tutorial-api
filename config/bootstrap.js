@@ -52,20 +52,13 @@ function createUsers() {
   ]);
 }
 
-// Returns a random integer between min (included) and max (included)
-// Using Math.round() will give you a non-uniform distribution!
-function length() {
-  var min = 1;
-  var max = 30;
-  return Math.floor(Math.random() * (max - min + 1)) + min;
-}
-
-function getTweetsFor(user) {
+function getTweetsFor(user, offset) {
+  var timestamp = moment();
   return userTweets[user.nickname].map(function(tweet) {
     return {
       user: user,
       text: tweet,
-      createdAt: moment().subtract(length(), 'days').toJSON()
+      createdAt: timestamp.subtract(3, 'hours').subtract(offset, 'minutes').toJSON()
     };
   });
 }
@@ -81,13 +74,13 @@ module.exports.bootstrap = function(cb) {
     var robo = _.find(users, {nickname: 'robo'});
 
     var data = _.flatten([
-      getTweetsFor(ayla),
-      getTweetsFor(crono),
-      getTweetsFor(frog),
-      getTweetsFor(lucca),
-      getTweetsFor(magus),
-      getTweetsFor(marle),
-      getTweetsFor(robo)
+      getTweetsFor(ayla, 0),
+      getTweetsFor(marle, 1),
+      getTweetsFor(frog, 2),
+      getTweetsFor(lucca, 3),
+      getTweetsFor(robo, 4),
+      getTweetsFor(magus, 5),
+      getTweetsFor(crono, 6)
     ]);
 
     return Tweet.create(data);
