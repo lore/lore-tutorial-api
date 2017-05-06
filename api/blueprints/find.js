@@ -35,12 +35,14 @@ module.exports = function findRecords (req, res) {
   var params = req.params.all();
   var page = params.page ? Number(params.page) : undefined;
   var perPage = params.perPage ? Number(params.perPage) : undefined;
+  var populate = params.populate ? params.populate.split(',') : [];
 
   Model.pagify('data', {
     findQuery: actionUtil.parseCriteria(req),
     sort: params.sort ? [params.sort] : ['createdAt DESC'],
     page: page,
-    perPage: perPage
+    perPage: perPage,
+    populate: populate
   }).then(function(result){
     var matchingRecords = result.data;
 
