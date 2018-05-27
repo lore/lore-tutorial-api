@@ -40,6 +40,7 @@ module.exports = function findRecords (req, res) {
   Model.pagify('data', {
     findQuery: actionUtil.parseCriteria(req),
     sort: params.sort ? [params.sort] : ['createdAt DESC'],
+    // sort: params.sort ? [params.sort] : [],
     page: page,
     perPage: perPage,
     populate: populate

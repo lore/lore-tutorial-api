@@ -43,6 +43,7 @@ module.exports.http = {
       'session',
       'passportInit',
       'myRequestLogger',
+      'delay',
       'bodyParser',
       'handleBodyParserError',
       'compress',
@@ -54,7 +55,7 @@ module.exports.http = {
       'favicon',
       '404',
       '500'
-    ]
+    ],
 
   /****************************************************************************
   *                                                                           *
@@ -65,7 +66,17 @@ module.exports.http = {
     // myRequestLogger: function (req, res, next) {
     //     console.log("Requested :: ", req.method, req.url);
     //     return next();
-    // }
+    // },
+
+    delay: function (req, res, next) {
+      if (req.method === 'OPTIONS') {
+        return next();
+      }
+
+      setTimeout(function() {
+        next();
+      }, 500);
+    }
 
 
   /***************************************************************************
