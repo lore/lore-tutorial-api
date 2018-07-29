@@ -20,6 +20,7 @@
     "request": "^2.75.0",
     "sails": "~0.12.4",
     "sails-disk": "~0.10.9",
-    "sails-hook-pagify": "^0.2.0"
+    "sails-hook-pagify": "^0.2.0",
+    "nomnom": "<2.0.0"
   }
 }
